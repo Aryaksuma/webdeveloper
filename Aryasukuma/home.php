@@ -1,3 +1,9 @@
+<?php
+include_once('koneksi.php');
+
+$result = mysqli_query($mysql, "SELECT * FROM user");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,44 +59,31 @@
     </ul>
   </div>
 </nav>
-        <div class="container mt-5">
-               
-                <table class="table table-hover table-dark">
-                <h2></h2>
 
-                <tr>
-                <th>No</th>    
-                <th>Nama Pengguna</th>            
-                <th><a href="tambah.php" class="btn btn-success">Tambah Data</a></th>
+<div class="container">
+<div class="row mt-4">
+<table width='80%' border=1>
+         <tr style="background-color">
+            <th>no</th>
+            <th>nama</th>
+            <th>alamat</th>
+            <th>nomor</th>
+            <th></th>
+         </tr>
+         <?php
+            $no = 1;
+            while($user = mysqli_fetch_array($result)){?>
+                <tr >
+                    <th><?= $no++; ?></th>
+                    <th><?= $user['nama'];?></th>
+                    <th><?= $user['alamat'];?></th>
+                    <th><?= $user['nomer_hp'];?></th>
+                    <th><a href="">edit</a> | <a href="">delete</a></th>
                 </tr>
+         <?php  }  ?>
+    </table>
+    </div>
+</div>
 
-                <tr>
-                <td>1</td>
-                <td></td>
-                <td>
-                <a href="edit.php"class="btn btn-warning">Edit</a>
-                <a href="hapus.php" class="btn btn-danger">Hapus</a>
-                </td>
-                 </tr>
-                 <tr>
-                <td>2</td>
-                <td></td>
-                <td>
-                <a href="edit.php"class="btn btn-warning">Edit</a>
-                <a href="hapus.php" class="btn btn-danger">Hapus</a>
-                </td>
-                 </tr>
-                 <tr>
-                <td>3</td>
-                <td></td>
-                <td>
-                <a href="edit.php"class="btn btn-warning">Edit</a>
-                <a href="hapus.php" class="btn btn-danger">Hapus</a>
-                </td>
-                 </tr>
-                </table>
-        </div>
-
-    
 </body>
 </html>
